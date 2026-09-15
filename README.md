@@ -28,19 +28,19 @@
 
 ```text
 data/
-├── raw/
-├── cleaned/
-└── processed/
+├── raw/          # исходные данные
+├── cleaned/      # очищенные данные
+└── mart/         # итоговые данные для анализа и прогнозирования
 
-src/
-├── etl/
-├── api/
-└── forecasting/
+src/              # исходный код проекта
 
-notebooks/
-config/
-requirements.txt
-README.md
+notebooks/        # Jupyter Notebook для анализа и разработки
+
+config/           # конфигурационные файлы
+
+requirements.txt  # зависимости проекта
+
+README.md         # описание проекта
 ```
 
 ## Запуск
