@@ -33,3 +33,13 @@ class HttpClient:
         raise RuntimeError(
             f"HTTP request failed after {self.retry_attempts} attempts: {last_error}"
         )
+
+
+def get_json(url, params=None, retries=3, backoff=2, timeout=30):
+    client = HttpClient(
+        timeout=timeout,
+        retry_attempts=retries,
+        backoff_factor=backoff
+    )
+    response = client.get(url, params=params)
+    return response.json()
