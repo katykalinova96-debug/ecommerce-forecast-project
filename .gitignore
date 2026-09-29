@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data
+data/warehouse.db
+data/source/olist/*
+!data/source/olist/.gitkeep

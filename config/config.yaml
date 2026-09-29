@@ -1,0 +1,43 @@
+project:
+  name: ecommerce_forecast
+  timezone: America/Sao_Paulo
+
+database:
+  path: data/warehouse.db
+
+sources:
+  olist:
+    source_dir: data/source/olist
+    watermark_column: order_purchase_timestamp
+
+  weather:
+    base_url: https://archive-api.open-meteo.com/v1/archive
+    cities:
+      - name: Sao Paulo
+        latitude: -23.5505
+        longitude: -46.6333
+      - name: Rio de Janeiro
+        latitude: -22.9068
+        longitude: -43.1729
+    variables:
+      - temperature_2m_mean
+      - precipitation_sum
+
+  holidays:
+    base_url: https://date.nager.at/api/v3/PublicHolidays
+    country_code: BR
+
+commercial_dates:
+  black_friday:
+    rule: last_friday_of_november
+
+  dia_das_maes:
+    rule: second_sunday_of_may
+
+  dia_dos_pais:
+    rule: second_sunday_of_august
+
+pipeline:
+  retry_attempts: 3
+  backoff_factor: 2
+  timeout_seconds: 30
